@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import bank.api.models.Account;
-import bank.api.models.OperationHistoryLine;
+import bank.api.models.OperationLine;
 import bank.api.service.Deposit;
 import bank.api.service.Withdraw;
 
@@ -67,8 +67,8 @@ public class Controller {
     }
 
     @RequestMapping(value = "/getOperationHistory", method = RequestMethod.GET, produces = { "application/json" })
-    public List<OperationHistoryLine> getOperationHistory() throws Exception {
-        List<OperationHistoryLine> response = new ArrayList<>();
+    public List<OperationLine> getOperationHistory() throws Exception {
+        List<OperationLine> response = new ArrayList<>();
         try{
             response = account.getOperationsHistory();
         } catch (RuntimeException e) {
