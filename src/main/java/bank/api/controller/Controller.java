@@ -1,8 +1,10 @@
 package bank.api.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import bank.api.service.DateUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,9 +40,9 @@ public class Controller {
     }
     @RequestMapping(value = "/saveDeposit", method = RequestMethod.POST, consumes = {
             "application/json" }, produces = { "application/json" })
-    public String saveDeposit(@RequestParam("amount") double amount) throws Exception {
+    public String saveDeposit(@RequestParam("amount") double amount,String dateOperation) throws Exception {
         try{
-            deposit.processOperation(account,amount);
+            deposit.processOperation(account,amount,new DateUtils().format(dateOperation));
         } catch (RuntimeException e) {
             e.printStackTrace();
             return e.getMessage();
@@ -53,9 +55,9 @@ public class Controller {
 
     @RequestMapping(value = "/doWithdraw", method = RequestMethod.POST, consumes = {
             "application/json" }, produces = { "application/json" })
-    public String doWithdraw( @RequestParam("amount") double amount) throws Exception {
+    public String doWithdraw( @RequestParam("amount") double amount,String dateOperation) throws Exception {
         try{
-            withdraw.processOperation(account,amount);
+            withdraw.processOperation(account,amount,new DateUtils().format(dateOperation));
         } catch (RuntimeException e) {
             e.printStackTrace();
             return e.getMessage();
@@ -70,7 +72,7 @@ public class Controller {
     public List<OperationLine> getOperationHistory() throws Exception {
         List<OperationLine> response = new ArrayList<>();
         try{
-            response = account.getOperationsHistory();
+            response = account.getOperations();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } catch (Exception e) {

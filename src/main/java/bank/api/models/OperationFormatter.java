@@ -16,7 +16,7 @@ public class OperationFormatter {
 
     public String format(final OperationLine operationLine) {
 
-        String ammountDisplay = operationLine.getOperationType().equals(OperationType.DEPOSIT) ? formatMoney(operationLine.getAmount())  :  FIELD_SEPARATOR + formatMoney(operationLine.getAmount());
+        String ammountDisplay = operationLine.getOperationType().equals(OperationType.DEPOSIT) ? formatMoney(operationLine.getAmount())  :  "-"+ formatMoney(operationLine.getAmount());
 
         return operationLine.getOperationType() + FIELD_SEPARATOR
                 +formatDate(operationLine.getOperationDate()) + FIELD_SEPARATOR

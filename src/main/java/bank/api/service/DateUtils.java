@@ -10,6 +10,7 @@ public class DateUtils {
 
     public DateUtils() {
         super();
+        datePattern = "dd/MM/yyyy HH:mm:ss";
     }
 
     public DateUtils(String datePattern) {

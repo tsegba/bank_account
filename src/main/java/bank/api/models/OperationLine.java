@@ -42,7 +42,7 @@ public class OperationLine {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OperationLine other = (OperationLine) o;
-        return Double.compare(other.getAmount(), getAmount()) == 0  && getOperationType() == other.getOperationType();
+        return Double.compare(other.getAmount(), getAmount()) == 0  && getOperationDate().equals(other.getOperationDate())  && getOperationType() == other.getOperationType();
     }
 
     @Override

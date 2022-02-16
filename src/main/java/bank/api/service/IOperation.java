@@ -6,6 +6,5 @@ import java.util.Date;
 
 public interface IOperation {
 
-    public void processOperation (IAccount account, double amount);
-    public void processOperationByDate (IAccount account, double amount, Date dateOperation);
+    public void processOperation (IAccount account, double amount, Date dateOperation);
 }
